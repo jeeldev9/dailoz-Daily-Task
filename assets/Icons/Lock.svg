@@ -2,8 +2,8 @@
 <svg width="24px" height="24px" viewBox="0 0 24 24" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
     <title>Iconly/Curved/Lock</title>
     <g id="Raw-File" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
-        <g id="Login" transform="translate(-35.000000, -304.000000)">
-            <g id="Iconly/Curved/Lock" transform="translate(35.000000, 304.000000)">
+        <g id="Signup" transform="translate(-35.000000, -366.000000)">
+            <g id="Iconly/Curved/Lock" transform="translate(35.000000, 366.000000)">
                 <path d="M0,0 L24,0 L24,24 L0,24 L0,0 Z" id="Iconly/Curved/Lock-(Background)"></path>
                 <g id="Lock" transform="translate(4.250488, 2.750000)" stroke="#A4A4A6" stroke-dasharray="0,0" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5">
                     <path d="M12.2206097,6.65335274 L12.2206097,4.50435257 C12.1896097,1.98535252 10.1216094,-0.0306472256 7.60360956,0.000352773844 C5.13660955,0.0313527733 3.14160937,2.01735258 3.09960938,4.48435259 L3.09960938,6.65335274" id="Stroke-1"></path>

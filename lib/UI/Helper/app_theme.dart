@@ -1,10 +1,11 @@
+import 'package:dailoz/constant.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 
 CustomTheme currentTheme = CustomTheme();
 
 class CustomTheme with ChangeNotifier {
-  static bool _isDarkTheme = true;
+  static bool _isDarkTheme = false;
   ThemeMode get currentTheme => _isDarkTheme ? ThemeMode.dark : ThemeMode.light;
   void toggleTheme() {
     _isDarkTheme = !_isDarkTheme;
@@ -19,12 +20,11 @@ class AppTheme{
     return  ThemeData(
         primaryColor: Colors.grey.shade600,
         scaffoldBackgroundColor: Colors.black,
+
+      brightness: Brightness.dark,
         fontFamily: 'Montserrat',
         textTheme:darkTextTheme,
-        buttonTheme: ButtonThemeData(
-          shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(90.0)),
-          buttonColor: Colors.purple,
-        )
+
     );
   }
   //for light theme
@@ -49,10 +49,16 @@ class AppTheme{
         color: Colors.black,
       fontSize: 32
     ),
+    bodyText2: GoogleFonts.roboto(
+      color: appPurpleColor,
+      fontSize: 32,
+      fontWeight: FontWeight.w400
+    ),
     subtitle1: GoogleFonts.roboto(
       fontSize: 16,
       color: Colors.black,
     ),
+
 
   );
   //for dark theme Text Style
@@ -67,5 +73,11 @@ class AppTheme{
        fontSize: 16,
        color: Colors.white,
      ),
+     bodyText2: GoogleFonts.roboto(
+         color: appPurpleColor,
+         fontSize: 32,
+         fontWeight: FontWeight.w400
+     ),
+
   );
 }

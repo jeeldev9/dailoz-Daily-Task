@@ -1,9 +1,11 @@
 import 'package:dailoz/UI/Helper/app_theme.dart';
-import 'package:dailoz/UI/Screen/splash_screen.dart';
-import 'package:dailoz/constant.dart';
+
 import 'package:flutter/material.dart';
 
+import 'UI/Screen/login_and_signup/login.dart';
+
 void main() {
+  // runApp(DevicePreview(builder:(context)=> MyApp()));
   runApp(MyApp());
 }
 
@@ -34,7 +36,7 @@ class _MyAppState extends State<MyApp> {
       darkTheme: AppTheme.darkTheme,
       themeMode: currentTheme.currentTheme,
 
-      home:const SplashScreen(),
+      home:const Login(),
     );
   }
 }
