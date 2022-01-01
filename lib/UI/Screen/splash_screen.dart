@@ -19,7 +19,7 @@ class _SplashScreenState extends State<SplashScreen> {
     return Scaffold(
       body: SafeArea(
         bottom: true,
-        top:true,
+        top: true,
         child: SizedBox(
           width: w,
           child: Column(
@@ -62,7 +62,9 @@ class _SplashScreenState extends State<SplashScreen> {
                 children: [
                   //Login Button
                   AppButton(
-                    buttonPressEvent: ()=> Navigator.push(context, MaterialPageRoute(builder: (context)=> Login())),
+                    buttonHorizontalPadding: w * 0.04,
+                    buttonPressEvent: () => Navigator.push(context,
+                        MaterialPageRoute(builder: (context) => Login())),
                     buttonColor: appPurpleColor!,
                     buttonText: "Login",
                   ),
@@ -70,13 +72,17 @@ class _SplashScreenState extends State<SplashScreen> {
                     height: 10,
                   ),
                   AppButton(
-                    buttonPressEvent: ()=>print("Sign up"),
+                    buttonHorizontalPadding: w * 0.04,
+                    buttonPressEvent: () => print("Sign up"),
                     buttonColor: Colors.transparent,
                     buttonText: "Sign Up",
                     buttonTextColor:
                         currentTheme.currentTheme == ThemeMode.light
                             ? appPurpleColor
                             : Colors.white,
+                  ),
+                  const SizedBox(
+                    height: 20,
                   ),
                 ],
               )

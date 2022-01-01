@@ -1,4 +1,5 @@
 import 'package:dailoz/UI/Helper/app_theme.dart';
+import 'package:dailoz/UI/Screen/splash_screen.dart';
 
 import 'package:flutter/material.dart';
 
@@ -10,14 +11,11 @@ void main() {
 }
 
 class MyApp extends StatefulWidget {
-
   @override
   State<MyApp> createState() => _MyAppState();
 }
 
 class _MyAppState extends State<MyApp> {
-
-
   @override
   void initState() {
     super.initState();
@@ -32,11 +30,10 @@ class _MyAppState extends State<MyApp> {
   Widget build(BuildContext context) {
     return MaterialApp(
       title: 'Flutter Demo',
-      theme: AppTheme.lightTheme ,
+      theme: AppTheme.lightTheme,
       darkTheme: AppTheme.darkTheme,
       themeMode: currentTheme.currentTheme,
-
-      home:const Login(),
+      home: SplashScreen(),
     );
   }
 }
