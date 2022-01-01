@@ -1,5 +1,7 @@
 import 'package:flutter/cupertino.dart';
+import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_svg/svg.dart';
 
 class AppTextFiled extends StatefulWidget {
   final String? hintTextTextFiled;
@@ -8,9 +10,11 @@ class AppTextFiled extends StatefulWidget {
   final Widget? suffixIconTextFiled;
   final VoidCallback? suffixIconEvent;
   final bool? isPasswordHideShow;
+  final double? scrollPadding;
 
   AppTextFiled({
     Key? key,
+    this.scrollPadding = 0.0,
     this.prefixIconTextFiled,
     required this.editingController,
     this.suffixIconEvent,
@@ -28,14 +32,18 @@ class _AppTextFiledState extends State<AppTextFiled> {
 
   @override
   void dispose() {
-    print("Controller Dispose");
+    if (kDebugMode) {
+      print("Controller Dispose");
+    }
     widget.editingController!.dispose();
     super.dispose();
   }
 
   @override
   Widget build(BuildContext context) {
+    double h = MediaQuery.of(context).size.height;
     return TextField(
+      scrollPadding: EdgeInsets.only(bottom: h * widget.scrollPadding!),
       obscureText: widget.isPasswordHideShow! ? !isIconClicked : false,
       controller: widget.editingController,
       decoration: InputDecoration(
@@ -48,7 +56,10 @@ class _AppTextFiledState extends State<AppTextFiled> {
         hintText: widget.hintTextTextFiled,
         suffixIcon: GestureDetector(
           onTap: () async {
-            print("SuffixIcon Clicked");
+            if (kDebugMode) {
+              print("SuffixIcon Clicked");
+            }
+
             widget.suffixIconEvent!();
             //is Password Hide Show true then condtion is true
             if (widget.isPasswordHideShow!) {
@@ -67,13 +78,24 @@ class _AppTextFiledState extends State<AppTextFiled> {
             padding: const EdgeInsets.only(left: 10),
             child: widget.isPasswordHideShow!
                 ? isIconClicked
-                    ? Icon(CupertinoIcons.eye)
-                    : Icon(CupertinoIcons.eye_slash)
+                    ? Padding(
+                      padding: const EdgeInsets.all(8.0),
+                      child: SvgPicture.asset("assets/Icons/Show.svg", color: Color(0xffC6CEDD)),
+                    )
+                    : Padding(
+                      padding: const EdgeInsets.all(8.0),
+                      child: SvgPicture.asset("assets/Icons/Hide.svg",
+                          color: Color(0xffC6CEDD),
+              fit: BoxFit.contain,
+                        ),
+                    )
                 : widget.suffixIconTextFiled,
           ),
         ),
-        hintStyle:
-            Theme.of(context).textTheme.subtitle1!.copyWith(color: Colors.grey),
+        hintStyle: Theme.of(context)
+            .textTheme
+            .subtitle1!
+            .copyWith(color: const Color(0xffC6CEDD)),
       ),
     );
   }

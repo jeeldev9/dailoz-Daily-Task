@@ -4,6 +4,8 @@ import 'package:dailoz/UI/global_widget/button_widget.dart';
 import 'package:dailoz/constant.dart';
 import 'package:flutter/material.dart';
 
+import 'login_and_signup/signup.dart';
+
 class SplashScreen extends StatefulWidget {
   const SplashScreen({Key? key}) : super(key: key);
 
@@ -73,7 +75,8 @@ class _SplashScreenState extends State<SplashScreen> {
                   ),
                   AppButton(
                     buttonHorizontalPadding: w * 0.04,
-                    buttonPressEvent: () => print("Sign up"),
+                    buttonPressEvent: () => Navigator.push(context,
+                        MaterialPageRoute(builder: (context) => SignUp())),
                     buttonColor: Colors.transparent,
                     buttonText: "Sign Up",
                     buttonTextColor:
