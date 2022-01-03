@@ -1,7 +1,10 @@
 import 'package:dailoz/UI/Helper/app_theme.dart';
 import 'package:dailoz/UI/Screen/splash_screen.dart';
+
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
+
+import 'UI/Screen/profile/profile_home_screen.dart';
 
 void main() {
   // runApp(DevicePreview(builder:(context)=> MyApp()));
@@ -35,7 +38,7 @@ class _MyAppState extends State<MyApp> {
       theme: AppTheme.lightTheme,
       darkTheme: AppTheme.darkTheme,
       themeMode: currentTheme.currentTheme,
-      home: const SplashScreen(),
+      home: ProfileHomeScreen(),
     );
   }
 }

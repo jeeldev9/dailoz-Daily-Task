@@ -1,4 +1,3 @@
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
@@ -12,7 +11,7 @@ class AppTextFiled extends StatefulWidget {
   final bool? isPasswordHideShow;
   final double? scrollPadding;
 
-  AppTextFiled({
+  const AppTextFiled({
     Key? key,
     this.scrollPadding = 0.0,
     this.prefixIconTextFiled,
@@ -80,12 +79,12 @@ class _AppTextFiledState extends State<AppTextFiled> {
                 ? isIconClicked
                     ? Padding(
                       padding: const EdgeInsets.all(8.0),
-                      child: SvgPicture.asset("assets/Icons/Show.svg", color: Color(0xffC6CEDD)),
+                      child: SvgPicture.asset("assets/Icons/Show.svg", color: const Color(0xffC6CEDD)),
                     )
                     : Padding(
                       padding: const EdgeInsets.all(8.0),
                       child: SvgPicture.asset("assets/Icons/Hide.svg",
-                          color: Color(0xffC6CEDD),
+                          color:const Color(0xffC6CEDD),
               fit: BoxFit.contain,
                         ),
                     )
