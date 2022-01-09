@@ -5,7 +5,7 @@ import 'package:google_fonts/google_fonts.dart';
 CustomTheme currentTheme = CustomTheme();
 
 class CustomTheme with ChangeNotifier {
-  static bool _isDarkTheme = true;
+  static bool _isDarkTheme = false;
   ThemeMode get currentTheme => _isDarkTheme ? ThemeMode.dark : ThemeMode.light;
   void toggleTheme() {
     _isDarkTheme = !_isDarkTheme;
@@ -55,6 +55,8 @@ class AppTheme {
         fontSize: 14,
         color: appPurpleColor,
       ),
+      headline1:
+          GoogleFonts.roboto(fontSize: 22, color: const Color(0xff10275A)),
       caption: GoogleFonts.roboto(fontSize: 16, color: Colors.grey.shade500));
   //for dark theme Text Style
 

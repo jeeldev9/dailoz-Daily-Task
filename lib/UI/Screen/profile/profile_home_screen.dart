@@ -1,114 +1,102 @@
-import 'package:dailoz/UI/Screen/login_and_signup/login.dart';
-import 'package:dailoz/UI/global_widget/bottomnavigation_indicatior.dart';
-import 'package:dailoz/constant.dart';
+import 'package:dailoz/UI/Screen/Profile/Widget/board_tile_container.dart';
+import 'package:dailoz/UI/appWidgets/popup_icontext_widget.dart';
+import 'package:dailoz/UI/appWidgets/popup_widget.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_svg/flutter_svg.dart';
 
 class ProfileHomeScreen extends StatelessWidget {
   ProfileHomeScreen({Key? key}) : super(key: key);
+  List<BoardTile> tiles = [
+    BoardTile(
+      taskNumber: 6,
+      tileBgColor: const Color(0xffFFE4E4).withOpacity(0.25),
+      tileIconBgColor: const Color(0xffE77D7D),
+      tileName: "Personal",
+    ),
+    BoardTile(
+      tileBgColor: const Color(0xff7FC9E7).withOpacity(0.25),
+      taskNumber: 8,
+    ),
+    BoardTile(
+      taskNumber: 6,
+    ),
+  ];
 
   @override
   Widget build(BuildContext context) {
     double h = MediaQuery.of(context).size.height;
     double w = MediaQuery.of(context).size.width;
+
     return Scaffold(
-      body: Login(),
-      bottomNavigationBar: ValueListenableBuilder(
-          valueListenable: pageIndex!,
-          builder: (context, c, v) {
-            return SafeArea(
-              bottom: true,
-              child: Padding(
-                padding: const EdgeInsets.symmetric(horizontal: 12.0),
-                child: Material(
-                  elevation: 8,
-                  borderRadius: BorderRadius.circular(22),
-                  shadowColor: const Color(0xffC6C6C6),
-                  color: Colors.transparent,
-                  child: Container(
-                    decoration: BoxDecoration(
-                      borderRadius: BorderRadius.circular(22),
-                      color: Colors.white,
-                    ),
-                    width: w * 0.91,
-                    height: h * 0.09,
-                    child: Padding(
-                      padding: const EdgeInsets.symmetric(horizontal: 20.0),
-                      child: Row(
-                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                        children: [
-                          pageIndex!.value == 1
-                              ? const IndexIndicator(image: "assets/Icons/Home_Fill.svg",)
-                              : GestureDetector(
-                                  onTap: () {
-                                    pageIndex!.value=1;
-                                  },
-                                  child: SvgPicture.asset(
-                                    "assets/Icons/Home.svg",
-                                    height: 30,
-                                    color: appGreyColor,
-                                  )),
-                          pageIndex!.value == 2
-                              ? const IndexIndicator(image: "assets/Icons/Document_Fill.svg",)
-                              : GestureDetector(
-                            onTap: () {
-                              pageIndex!.value=2;
-                            },
-                                child: SvgPicture.asset(
-                                    "assets/Icons/Document.svg",
-                                    height: 30,
-                                    color: appGreyColor,
-                                  ),
-                              ),
-                          Container(
-                            height: 55,
-                            width: 55,
-                            decoration: BoxDecoration(
-                              color: appPurpleColor,
-                              shape: BoxShape.circle,
-                            ),
-                            child: const Center(
-                              child: Icon(
-                                CupertinoIcons.add,
-                                color: Colors.white,
-                              ),
-                            ),
-                          ),
-                          pageIndex!.value == 3
-                              ? const IndexIndicator(image:
-                                  "assets/Icons/Activity_Fill.svg"
-                                  )
-                              : GestureDetector(
-                            onTap: () {
-                              pageIndex!.value=3;
-                            },
-                                child: SvgPicture.asset(
-                                    "assets/Icons/Activity.svg",
-                                    height: 30,
-                                    color: appGreyColor,
-                                  ),
-                              ),
-                          pageIndex!.value == 4
-                              ? const IndexIndicator(image: "assets/Icons/Folder_Fill.svg",)
-                              : GestureDetector(
-                            onTap: () {
-                              pageIndex!.value=4;
-                            },
-                                child: SvgPicture.asset(
-                                    "assets/Icons/Folder.svg",
-                                    height: 30,
-                                    color: appGreyColor,
-                                  ),
-                              ),
-                        ],
-                      ),
-                    ),
-                  )..padding?.add(EdgeInsets.zero),
+      body: SingleChildScrollView(
+        physics: const BouncingScrollPhysics(),
+        child: SafeArea(
+          top: true,
+          child: Padding(
+            padding: const EdgeInsets.symmetric(horizontal: 20.0),
+            child: Column(
+              children: [
+                PopupWidget(
+                  containerIcon: CupertinoIcons.home,
+                  buttons: const [
+                    PopupIconText(
+                        rowText: "Setting", rowIcon: CupertinoIcons.book),
+                    PopupIconText(
+                        rowText: "Log Out", rowIcon: CupertinoIcons.book),
+                  ],
                 ),
-              ),
-            );
-          }),
+                Container(
+                  height: h * 0.23,
+                  width: w * 0.23,
+                  decoration:
+                      BoxDecoration(color: Colors.red, shape: BoxShape.circle),
+                ),
+                Text(
+                  "Jeel Bhatti",
+                  style: Theme.of(context)
+                      .textTheme
+                      .headline1
+                      ?.copyWith(inherit: true, fontWeight: FontWeight.bold),
+                ),
+                const SizedBox(
+                  height: 10,
+                ),
+                Text(
+                  "Jeelbhatti9@gmail.com",
+                  style: Theme.of(context)
+                      .textTheme
+                      .headline1
+                      ?.copyWith(fontWeight: FontWeight.w200, fontSize: 18),
+                ),
+                SizedBox(
+                  height: h * 0.05,
+                ),
+                GridView.builder(
+                  physics: const NeverScrollableScrollPhysics(),
+                  shrinkWrap: true,
+                  itemCount: tiles.length + 1,
+                  gridDelegate: const SliverGridDelegateWithMaxCrossAxisExtent(
+                      maxCrossAxisExtent: 200,
+                      childAspectRatio: 1,
+                      crossAxisSpacing: 20,
+                      mainAxisSpacing: 20),
+                  itemBuilder: (context, index) {
+                    return tiles.length == index
+                        ? const BoardTile(
+                            tileName: "Create Board",
+                            tileIcon: Icons.ac_unit,
+                            tileIconBgColor: Color(0xffF0A58E),
+                            tileBgColor: Color(0xffFFEFEB),
+                            hideTask: true,
+                          )
+                        : tiles[index];
+                  },
+                ),
+              ],
+            ),
+          ),
+        ),
+      ),
     );
   }
 }

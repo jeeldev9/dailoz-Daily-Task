@@ -24,7 +24,7 @@ class _MyAppState extends State<MyApp> {
     super.initState();
     currentTheme.addListener(() {
       //2
-      if(kDebugMode) {
+      if (kDebugMode) {
         print("Theme Changed");
       }
       setState(() {});
@@ -38,6 +38,7 @@ class _MyAppState extends State<MyApp> {
       theme: AppTheme.lightTheme,
       darkTheme: AppTheme.darkTheme,
       themeMode: currentTheme.currentTheme,
+      debugShowCheckedModeBanner: false,
       home: ProfileHomeScreen(),
     );
   }
